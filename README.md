@@ -21,3 +21,11 @@ Collection of CMake - CPM recipes for libraries commonly used in audio developme
         OPTIONS "YAML_CPP_INSTALL NO" "YAML_CPP_BUILD_TOOLS NO" "YAML_CPP_BUILD_TESTS NO" "YAML_CPP_CLANG_FORMAT_EXE NO")
         
         
+## Lock Free Queue - MoodyCamel
+
+    CPMAddPackage(
+        NAME readerwriterqueue
+        GITHUB_REPOSITORY cameron314/readerwriterqueue
+        GIT_TAG origin/master
+    )
+    
