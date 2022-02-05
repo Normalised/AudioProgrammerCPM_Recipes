@@ -2,12 +2,28 @@
 
 Collection of CMake - CPM recipes for libraries commonly used in audio development
 
+## JUCE
+
+    CPMAddPackage(
+        NAME JUCE
+        GITHUB_REPOSITORY juce-framework/JUCE
+        GIT_TAG origin/master
+    )
+
 ## Ableton Link
 
     CPMAddPackage(
         NAME link
         GIT_TAG origin/master
         GITHUB_REPOSITORY Ableton/link
+    )
+
+## Doctest - Unit testing library
+
+    CPMAddPackage(
+        NAME doctest
+        GIT_TAG 2.4.6
+        GITHUB_REPOSITORY onqtam/doctest
     )
     
 ## JSON
