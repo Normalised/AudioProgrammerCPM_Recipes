@@ -68,3 +68,20 @@ getAndIncludeASIOSDK(asiosdk_2.3.3_2019-06-14)
         endif()
         include_directories(Libs/include/asiosdk/common)
     endmacro(getAndIncludeASIOSDK)
+
+## RxCpp
+
+    CPMAddPackage(
+        NAME RxCpp
+        VERSION 4.1.0
+        GITHUB_REPOSITORY ReactiveX/RxCpp
+        DOWNLOAD_ONLY YES
+    )
+
+    if(RxCpp_ADDED)
+        # We only want the headers from Rx/v2/src
+        add_library(RxCpp INTERFACE IMPORTED)
+        set(RxSourceDir "${RxCpp_SOURCE_DIR}/Rx/v2/src")
+        target_include_directories(RxCpp INTERFACE ${RxSourceDir})
+
+    endif()
