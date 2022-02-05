@@ -2,6 +2,14 @@
 
 Collection of CMake - CPM recipes for libraries commonly used in audio development
 
+## Ableton Link
+
+    CPMAddPackage(
+        NAME link
+        GIT_TAG origin/master
+        GITHUB_REPOSITORY Ableton/link
+    )
+    
 ## JSON
 
     CPMAddPackage(
