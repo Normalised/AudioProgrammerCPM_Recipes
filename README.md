@@ -29,3 +29,42 @@ Collection of CMake - CPM recipes for libraries commonly used in audio developme
         GIT_TAG origin/master
     )
     
+
+## Steinberg ASIO SDK
+
+This isn't via CPM, instead it downloads the ASIO SDK Zip file and extracts it into the source tree at Libs/include/asiosdk
+
+call the macro from your CMakeLists.txt file using a the filename_version_date format. e.g.
+
+getAndIncludeASIOSDK(asiosdk_2.3.3_2019-06-14)
+
+
+    macro(getAndIncludeASIOSDK ASIO_SDK_VERSION)
+
+        list(APPEND CMAKE_MESSAGE_INDENT "  ")
+
+        if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Libs/include/asiosdk/common)
+            file(
+                MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Libs/include/asiosdk
+            )
+            message("Fetching ASIO SDK")
+            file(
+                DOWNLOAD https://download.steinberg.net/sdk_downloads/${ASIO_SDK_VERSION}.zip "${CMAKE_CURRENT_BINARY_DIR}/asiosdk.zip"
+                TIMEOUT 60
+            )
+            message("Extracting ASIO SDK")
+            file(ARCHIVE_EXTRACT INPUT "${CMAKE_CURRENT_BINARY_DIR}/asiosdk.zip")
+
+            file(
+                RENAME ${CMAKE_CURRENT_BINARY_DIR}/${ASIO_SDK_VERSION}/common ${CMAKE_CURRENT_SOURCE_DIR}/Libs/include/asiosdk/common
+            )
+            # tidy up the download and extracted files that no longer needed
+            file(
+                REMOVE ${CMAKE_CURRENT_BINARY_DIR}/asiosdk.zip
+            )
+            file(
+                REMOVE_RECURSE ${CMAKE_CURRENT_BINARY_DIR}/${ASIO_SDK_VERSION}
+            )
+        endif()
+        include_directories(Libs/include/asiosdk/common)
+    endmacro(getAndIncludeASIOSDK)
