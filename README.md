@@ -53,6 +53,13 @@ Collection of CMake - CPM recipes for libraries commonly used in audio developme
         GIT_TAG origin/master
     )
     
+## MTS-ESP Tuning Library
+
+    CPMAddPackage (NAME MTS-ESP 
+               GITHUB_REPOSITORY ODDSound/MTS-ESP 
+               GIT_TAG origin/main)
+
+    target_include_directories (<YOUR_TARGET> INTERFACE "${MTS-ESP_SOURCE_DIR}/Client")
 
 ## Steinberg ASIO SDK
 
