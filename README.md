@@ -10,6 +10,17 @@ Collection of CMake - CPM recipes for libraries commonly used in audio developme
         GIT_TAG origin/master
     )
 
+You can also pass options directly to JUCE from the CPM call
+
+    CPMAddPackage (NAME JUCE
+       GITHUB_REPOSITORY juce-framework/JUCE
+       GIT_TAG origin/master
+       OPTIONS 
+       "JUCE_ENABLE_MODULE_SOURCE_GROUPS ON"
+       "JUCE_BUILD_EXAMPLES OFF"
+       "JUCE_BUILD_EXTRAS OFF")
+               
+
 ## Ableton Link
 
     CPMAddPackage(
