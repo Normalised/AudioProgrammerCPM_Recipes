@@ -127,3 +127,19 @@ getAndIncludeASIOSDK(asiosdk_2.3.3_2019-06-14)
         target_include_directories(RxCpp INTERFACE ${RxSourceDir})
 
     endif()
+
+## Raw Keyboard Input JUCE Module
+
+    CPMAddPackage (
+        NAME raw_keyboard_module
+        GITHUB_REPOSITORY izzyreal/juce-raw-keyboard-input-module
+        GIT_TAG origin/main
+    )
+
+Then link against the `raw_keyboard_input` target.
+
+    target_link_libraries(MyApp
+        PRIVATE
+        raw_keyboard_input
+
+   
