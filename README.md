@@ -20,6 +20,7 @@ You can also pass options directly to JUCE from the CPM call
        "JUCE_BUILD_EXAMPLES OFF"
        "JUCE_BUILD_EXTRAS OFF")
                
+See below for some JUCE Modules.
 
 ## Ableton Link
 
@@ -142,4 +143,19 @@ Then link against the `raw_keyboard_input` target.
         PRIVATE
         raw_keyboard_input
 
-   
+## Foleys Gui Magic
+
+    CPMAddPackage (
+        NAME PluginGuiMagic
+        GITHUB_REPOSITORY ffAudio/PluginGuiMagic
+        GIT_TAG origin/main
+        DOWNLOAD_ONLY YES
+    )
+
+    juce_add_module(${PluginGuiMagic_SOURCE_DIR}/modules/foleys_gui_magic)
+    
+Then link against the `foleys_gui_magic` target
+
+    target_link_libraries(MyApp
+        PRIVATE
+        foleys_gui_magic
